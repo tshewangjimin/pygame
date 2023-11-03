@@ -70,6 +70,7 @@ class MAIN:
     def draw_elements(self):
         self.fruit.draw_fruit()
         self.snake.draw_snake()
+        self.draw_score()
 
     def check_collision(self):
         if self.fruit.pos == self.snake.body[0]:
@@ -96,6 +97,13 @@ class MAIN:
         self.snake.reset()
         
 
+    def draw_score(self):
+        score_text = str(len(self.snake.body) - 3)
+        score_surface = game_font.render(score_text,True,(56,76,12))
+        score_x = int(cell_size * cell_number - 60)
+        score_y = int(cell_size * cell_number - 40)
+        score_rect = score_surface.get_rect(center = (score_x,score_y))
+        screen.blit(score_surface,score_rect)
 
 pygame.init()
 cell_size = 28
@@ -103,6 +111,7 @@ cell_number = 25
 screen = pygame.display.set_mode((cell_number * cell_size, cell_number * cell_size))
 clock = pygame.time.Clock()
 apple = pygame.image.load('apple (1).png').convert_alpha()
+game_font = pygame.font.Font(None,32)
 
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE,150)
