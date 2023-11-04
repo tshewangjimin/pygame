@@ -109,6 +109,7 @@ pygame.init()
 cell_size = 28
 cell_number = 25
 screen = pygame.display.set_mode((cell_number * cell_size, cell_number * cell_size))
+pygame.display.set_caption("snake game")
 clock = pygame.time.Clock()
 apple = pygame.image.load('apple (1).png').convert_alpha()
 game_font = pygame.font.Font(None,32)
